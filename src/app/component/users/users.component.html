@@ -1,28 +1,30 @@
 <div class="container">
   <div>
     <table>
-        <thead>
-          <tr>
-            <th>Customer ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Details</th>
-            <!-- Add more headers as needed -->
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let respons of response">
-            <td>{{ respons.id }}</td>
-            <td>{{ respons.customer_name }}</td>
-            <td>{{ respons.email }}</td>
-            <td>{{ respons.address }}</td>
-            <td>{{ respons.phone_number }}</td>
-            <td><a class="btn btn-warning" [routerLink]="">Detail</a></td>
-            <!-- Add more cells as needed -->
-          </tr>
-        </tbody>
-      </table>
+      <thead>
+        <tr>
+          <th>Customer ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Phone</th>
+          <th>Details</th>
+          <!-- Add more headers as needed -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let respons of response">
+          <td>{{ respons.id }}</td>
+          <td>{{ respons.customer_name }}</td>
+          <td>{{ respons.email }}</td>
+          <td>{{ respons.address }}</td>
+          <td>{{ respons.phone_number }}</td>
+          <td>
+            <a class="btn btn-warning" [routerLink]="['/user/', respons.id]">Detail</a>
+          </td>
+          <!-- Add more cells as needed -->
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
