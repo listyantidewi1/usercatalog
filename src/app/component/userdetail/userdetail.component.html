@@ -1,41 +1,14 @@
-<div class="container">
-    <!-- <div>
-      <table>
-        <thead>
-          <tr>
-            <th>Customer ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Details</th>
-            
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let respons of response">
-            <td>{{ respons.id }}</td>
-            <td>{{ respons.customer_name }}</td>
-            <td>{{ respons.email }}</td>
-            <td>{{ respons.address }}</td>
-            <td>{{ respons.phone_number }}</td>
-            <td>
-              <a class="btn btn-warning" [routerLink]="['/user/', respons.id]">Detail</a>
-            </td>
-            
-          </tr>
-        </tbody>
-      </table>
-    </div> -->
-    <div *ngFor="let respons of data" class="card">
-      <div class="card-title">
-        <h3>{{ respons.customer_name }}</h3>
-      </div>
-      <div class="card-body">
-        <h4>{{ respons.email }}</h4>
-        <h4>{{ respons.address }}</h4>
-        <h4>{{ respons.phone_number }}</h4>
-      </div>
+<div *ngFor="let respons of data" class="container">
+  <h6>Details for customer #{{ respons.id }}</h6>
+  <div class="card">
+    <div class="card-title">
+      <h3>{{ respons.customer_name }}</h3>
+    </div>
+    <div class="card-body">
+      <p>Email: {{ respons.email }}</p>
+      <p>Address: {{ respons.address }}</p>
+      <p>Phone: {{ respons.phone_number }}</p>
     </div>
   </div>
-  
+  <a href="/users">Back to all costumers</a>
+</div>
