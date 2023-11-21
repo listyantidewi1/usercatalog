@@ -1,5 +1,5 @@
 <div class="container">
-    <h5>All Customers</h5>
+  <h5>All Customers</h5>
   <div>
     <table class="table">
       <thead>
@@ -21,11 +21,18 @@
           <td>{{ respons.address }}</td> -->
           <td>{{ respons.phone_number }}</td>
           <td>
-            <a class="btn btn-warning" [routerLink]="['/user/', respons.id]">view</a>
+            <a class="btn btn-warning" [routerLink]="['/user/', respons.id]"
+              >view</a
+            >
           </td>
           <!-- Add more cells as needed -->
         </tr>
       </tbody>
     </table>
+  </div>
+  <!-- Pagination -->
+  <div>
+    <button ng-click="prevPage()">Previous</button>
+    <button ng-click="nextPage()">Next</button>
   </div>
 </div>
