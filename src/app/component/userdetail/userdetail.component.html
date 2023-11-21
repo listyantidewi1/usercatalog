@@ -1,5 +1,5 @@
 <div class="container">
-    <div>
+    <!-- <div>
       <table>
         <thead>
           <tr>
@@ -9,7 +9,7 @@
             <th>Address</th>
             <th>Phone</th>
             <th>Details</th>
-            <!-- Add more headers as needed -->
+            
           </tr>
         </thead>
         <tbody>
@@ -22,10 +22,20 @@
             <td>
               <a class="btn btn-warning" [routerLink]="['/user/', respons.id]">Detail</a>
             </td>
-            <!-- Add more cells as needed -->
+            
           </tr>
         </tbody>
       </table>
+    </div> -->
+    <div *ngFor="let respons of data" class="card">
+      <div class="card-title">
+        <h3>{{ respons.customer_name }}</h3>
+      </div>
+      <div class="card-body">
+        <h4>{{ respons.email }}</h4>
+        <h4>{{ respons.address }}</h4>
+        <h4>{{ respons.phone_number }}</h4>
+      </div>
     </div>
   </div>
   

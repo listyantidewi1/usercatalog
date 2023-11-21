@@ -9,12 +9,12 @@ import { UserService } from './../../service/user.service';
 })
 export class UserdetailComponent implements OnInit {
   constructor(private userDetailService: UserDetailService) {}
-  response: Array<any>;
+  data: any;
 
   ngOnInit(): void {
     this.userDetailService.getUser(1).subscribe((results: any) => {
       console.log(results);
-      this.response = results;
+      this.data = results;
     });
   }
 }
