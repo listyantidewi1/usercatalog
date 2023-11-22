@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="page">
   <h5>All Customers</h5>
   <div>
     <table class="table">
@@ -7,47 +7,31 @@
           <th>Customer ID</th>
           <th>Name</th>
           <th>Email</th>
-          <!-- <th>Address</th>
-          <th>Phone</th> -->
           <th>Details</th>
-          <!-- Add more headers as needed -->
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let respons of response">
           <td>{{ respons.id }}</td>
           <td>{{ respons.customer_name }}</td>
-          <!-- <td>{{ respons.email }}</td>
-          <td>{{ respons.address }}</td> -->
           <td>{{ respons.phone_number }}</td>
           <td>
             <a class="btn btn-warning" [routerLink]="['/user/', respons.id]"
               >view</a
             >
           </td>
-          <!-- Add more cells as needed -->
         </tr>
       </tbody>
     </table>
   </div>
   <!-- Pagination -->
-  <div *ngIf="limit">
-    <div *ngIf="page">
-      <!-- <div>
-      Display customer information
-      <p>{{ page }}, {{ page }}</p>
-    </div> -->
-
-      <!-- Pagination -->
-      <!-- <button ng-click="prevPage()" ng-disabled="currentPage === 1">
-      Previous
-    </button> -->
-      <a [routerLink]="['/users/', page - 1, limit]" class="btn btn-primary"
+  <div *ngIf="prevPage">
+    <div *ngIf="nextPage">
+      <a [routerLink]="['/users/', prevPage, limit]" class="btn btn-primary"
         >Prev</a
       >
       <span class="p-1">{{ page }}</span>
-      <!-- <button ng-click="nextPage()" ng-disabled="!hasMoreData">Next</button> -->
-      <a [routerLink]="['/users/', page + 1, limit]" class="btn btn-primary"
+      <a [routerLink]="['/users/', nextPage, limit]" class="btn btn-primary"
         >Next</a
       >
     </div>
