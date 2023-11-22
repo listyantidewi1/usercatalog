@@ -1,4 +1,3 @@
-import { Response } from '../../interface/response.interface';
 import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';

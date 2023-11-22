@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
-import { Response } from '../interface/response.interface';
-import { User } from '../interface/user.interface';
+
 // import { response } from 'express';
 
 @Injectable({
@@ -15,7 +14,7 @@ export class UserService {
   constructor(private http: HttpClient) {}
 
   //fetch all users
-  getUsers(page: number = 1, limit: number = 10): Observable<any> {
+  getUsers(page: number, limit: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?_page=${page}&_limit=${limit}`);
     // .pipe(map((response) => this.processResponse(response)));
   }
@@ -24,10 +23,10 @@ export class UserService {
   // }
 
   //fetch one user using idCustomer
-  getUser(idCustomer: number): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}?id=${idCustomer}`);
-    // .pipe(map((response) => this.processResponse(response)));
-  }
+  // getUser(idCustomer: number): Observable<any> {
+  //   return this.http.get<any>(`${this.apiUrl}?id=${idCustomer}`);
+  //   // .pipe(map((response) => this.processResponse(response)));
+  // }
   // getUser(uuid: number = 1): Observable<any> {
   //   return this.http.get<any>(`$(this.apiUrl)/?uuid=${uuid}`);
   // }

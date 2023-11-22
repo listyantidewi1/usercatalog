@@ -31,8 +31,25 @@
     </table>
   </div>
   <!-- Pagination -->
-  <div>
-    <button ng-click="prevPage()">Previous</button>
-    <button ng-click="nextPage()">Next</button>
+  <div *ngIf="limit">
+    <div *ngIf="page">
+      <!-- <div>
+      Display customer information
+      <p>{{ page }}, {{ page }}</p>
+    </div> -->
+
+      <!-- Pagination -->
+      <!-- <button ng-click="prevPage()" ng-disabled="currentPage === 1">
+      Previous
+    </button> -->
+      <a [routerLink]="['/users/', page - 1, limit]" class="btn btn-primary"
+        >Prev</a
+      >
+      <span class="p-1">{{ page }}</span>
+      <!-- <button ng-click="nextPage()" ng-disabled="!hasMoreData">Next</button> -->
+      <a [routerLink]="['/users/', page + 1, limit]" class="btn btn-primary"
+        >Next</a
+      >
+    </div>
   </div>
 </div>
