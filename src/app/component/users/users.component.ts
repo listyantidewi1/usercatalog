@@ -19,6 +19,7 @@ export class UsersComponent implements OnInit {
   prevPage: number;
   nextPage: number;
   searchTerm: string = '';
+  loading: boolean = false;
   // max: boolean;
 
   // ngOnInit(): void {
@@ -39,10 +40,12 @@ export class UsersComponent implements OnInit {
   }
 
   getDataById(page: number, limit: number): void {
+    this.loading = true;
     this.userService.getUsers(page, limit).subscribe((results: any) => {
       console.log(results);
       this.response = results;
       this.page = page;
+      this.loading = false;
       this.prevPage = Number(page) - Number(1);
       if (this.prevPage <= 0) {
         this.prevPage = 1;
@@ -57,8 +60,10 @@ export class UsersComponent implements OnInit {
   }
 
   searchByName() {
+    this.loading = true;
     if (this.searchTerm.trim() !== '') {
       console.log(this.searchTerm)
+      this.loading = false;
       this.searchResponse = this.response.filter((item) =>
         item.customer_name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );

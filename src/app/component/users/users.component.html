@@ -1,6 +1,7 @@
+<div *ngIf="loading">Loading...</div>
 <div class="container" *ngIf="page">
   <h5>All Customers</h5>
-  <div>
+  <div *ngIf="!loading">
     <input
       type="text"
       [(ngModel)]="searchTerm"
@@ -16,8 +17,8 @@
       item.customer_name
     }}</a>
   </div>
-
-  <div>
+  <div *ngIf="loading">Loading...</div>
+  <div *ngIf="!loading">
     <table class="table">
       <thead>
         <tr>
