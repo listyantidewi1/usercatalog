@@ -17,6 +17,7 @@ export class UsersComponent implements OnInit {
   limit: number;
   prevPage: number;
   nextPage: number;
+  // max: boolean;
 
   // ngOnInit(): void {
   //   this.userService.getUsers(1, 5).subscribe((results: any) => {
@@ -45,8 +46,9 @@ export class UsersComponent implements OnInit {
         this.prevPage = 1;
       }
       this.nextPage = Number(page) + Number(1);
-      if (this.response == null) {
+      if (this.response.length == 0) {
         this.nextPage = page;
+        // this.max = false;
       }
       this.limit = limit;
     });
