@@ -74,6 +74,9 @@ export class UsersComponent implements OnInit {
 
   applyLimit() {
     // this.loading = true;
+    if (isNaN(this.limitData) || this.limitData <= 0) {
+      this.limit = 1;
+    }
     this.limit = this.limitData;
     this.router.navigate(['/users/', this.page, this.limit]);
   }

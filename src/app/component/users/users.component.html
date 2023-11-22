@@ -11,7 +11,9 @@
       placeholder="Enter name to search"
     />
     <!-- jika klik tombol search, panggil fungsi searchByName yg ada di users.component.ts -->
-    <button class="btn btn-primary form-control" (click)="searchByName()">Search</button>
+    <button class="btn btn-primary form-control" (click)="searchByName()">
+      Search
+    </button>
   </div>
 
   <!-- dapatkan data hasil pencarian di searchResponse dan masukkan satu per satu ke data -->
@@ -26,15 +28,19 @@
     <input
       class="form-control"
       type="number"
+      min="1"
       [(ngModel)]="limitData"
       placeholder="Enter number of data to be displayed"
     />
     <!-- jika klik tombol search, panggil fungsi searchByName yg ada di users.component.ts -->
-    <button class="btn btn-primary form-control" (click)="applyLimit()">Apply</button>
+    <button class="btn btn-primary form-control" (click)="applyLimit()">
+      Apply
+    </button>
   </div>
 
   <!-- tampilkan data customer dalam tabel -->
-  <div *ngIf="loading">Loading...</div>
+  <span class="spinner-border" role="status" *ngIf="loading"></span
+  ><span>Loading...</span>
   <div *ngIf="!loading">
     <table class="table mt-4">
       <thead>
