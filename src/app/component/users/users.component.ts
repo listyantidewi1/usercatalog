@@ -1,6 +1,6 @@
 import { UserService } from './../../service/user.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -10,12 +10,14 @@ import { ActivatedRoute } from '@angular/router';
 export class UsersComponent implements OnInit {
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
   response: Array<any>; //untuk menampung semua data
   searchResponse: Array<any>; //untuk menampung data hasil pencarian
   page: number;
   limit: number;
+  limitData: number;
   prevPage: number; //page - 1
   nextPage: number; //page + 1
   searchTerm: string = ''; //kata kunci pencarian
@@ -58,8 +60,9 @@ export class UsersComponent implements OnInit {
   //fungsi untuk pencarian
   searchByName() {
     this.loading = true; //loading
-    if (this.searchTerm.trim() !== '') { //hilangkan spasi di awal dan di akhir kata kunci pencarian
-      console.log(this.searchTerm) //log kata kunci pencarian ke console
+    if (this.searchTerm.trim() !== '') {
+      //hilangkan spasi di awal dan di akhir kata kunci pencarian
+      console.log(this.searchTerm); //log kata kunci pencarian ke console
       this.loading = false; //matikan loading
 
       //filter hasil pencarian dari response sesuai kata kunci yang sudah dirubah ke huruf kecil
@@ -67,5 +70,11 @@ export class UsersComponent implements OnInit {
         item.customer_name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
+  }
+
+  applyLimit() {
+    // this.loading = true;
+    this.limit = this.limitData;
+    this.router.navigate(['/users/', this.page, this.limit]);
   }
 }

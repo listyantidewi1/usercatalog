@@ -3,15 +3,16 @@
 <div class="container" *ngIf="page">
   <h5>All Customers</h5>
   <!-- form input untuk pencarian data -->
-  <div *ngIf="!loading">
+  <div class="form-control" *ngIf="!loading">
     <input
       type="text"
       [(ngModel)]="searchTerm"
       placeholder="Enter name to search"
     />
     <!-- jika klik tombol search, panggil fungsi searchByName yg ada di users.component.ts -->
-    <button (click)="searchByName()">Search</button>
+    <button class="btn btn-primary" (click)="searchByName()">Search</button>
   </div>
+
   <!-- dapatkan data hasil pencarian di searchResponse dan masukkan satu per satu ke data -->
   <div *ngFor="let item of searchResponse">
     <!-- tampilkan hasil pencarian dalam bentuk link  -->
@@ -19,7 +20,13 @@
       item.customer_name
     }}</a>
   </div>
-  
+
+  <div class="form-control" *ngIf="!loading">
+    <input type="number" [(ngModel)]="limitData" placeholder="Limit data" />
+    <!-- jika klik tombol search, panggil fungsi searchByName yg ada di users.component.ts -->
+    <button class="btn btn-primary" (click)="applyLimit()">Apply</button>
+  </div>
+
   <!-- tampilkan data customer dalam tabel -->
   <div *ngIf="loading">Loading...</div>
   <div *ngIf="!loading">
