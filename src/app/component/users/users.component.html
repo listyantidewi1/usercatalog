@@ -1,25 +1,29 @@
+<!-- tampilkan loading... -->
 <div *ngIf="loading">Loading...</div>
 <div class="container" *ngIf="page">
   <h5>All Customers</h5>
+  <!-- form input untuk pencarian data -->
   <div *ngIf="!loading">
     <input
       type="text"
       [(ngModel)]="searchTerm"
       placeholder="Enter name to search"
     />
+    <!-- jika klik tombol search, panggil fungsi searchByName yg ada di users.component.ts -->
     <button (click)="searchByName()">Search</button>
   </div>
-
+  <!-- dapatkan data hasil pencarian di searchResponse dan masukkan satu per satu ke data -->
   <div *ngFor="let item of searchResponse">
-    <!-- Display your data here -->
-    <!-- <p>{{ item.customer_name }}</p> -->
-    <a class="m-3" [routerLink]="['/user/', item.id]">{{
+    <!-- tampilkan hasil pencarian dalam bentuk link  -->
+    <a class="p-3" [routerLink]="['/user/', item.id]">{{
       item.customer_name
     }}</a>
   </div>
+  
+  <!-- tampilkan data customer dalam tabel -->
   <div *ngIf="loading">Loading...</div>
   <div *ngIf="!loading">
-    <table class="table">
+    <table class="table mt-4">
       <thead>
         <tr>
           <th>Customer ID</th>
