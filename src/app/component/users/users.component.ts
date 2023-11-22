@@ -46,7 +46,7 @@ export class UsersComponent implements OnInit {
         this.prevPage = 1;
       }
       this.nextPage = Number(page) + Number(1);
-      if (this.response.length == 0) {
+      if (this.response.length < this.limit) {
         this.nextPage = page;
         // this.max = false;
       }
