@@ -13,10 +13,12 @@ export class UsersComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   response: Array<any>;
+  searchResponse: Array<any>;
   page: number;
   limit: number;
   prevPage: number;
   nextPage: number;
+  searchTerm: string = '';
   // max: boolean;
 
   // ngOnInit(): void {
@@ -52,5 +54,14 @@ export class UsersComponent implements OnInit {
       }
       this.limit = limit;
     });
+  }
+
+  searchByName() {
+    if (this.searchTerm.trim() !== '') {
+      console.log(this.searchTerm)
+      this.searchResponse = this.response.filter((item) =>
+        item.customer_name.toLowerCase().includes(this.searchTerm.toLowerCase())
+      );
+    }
   }
 }

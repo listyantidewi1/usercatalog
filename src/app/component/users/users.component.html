@@ -1,6 +1,22 @@
 <div class="container" *ngIf="page">
   <h5>All Customers</h5>
   <div>
+    <form>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        placeholder="Enter name to search"
+      />
+      <button (click)="searchByName()">Search</button>
+    </form>
+  </div>
+
+  <div *ngFor="let item of searchResponse">
+    <!-- Display your data here -->
+    <p>{{ item.customer_name }}</p>
+  </div>
+
+  <div>
     <table class="table">
       <thead>
         <tr>
