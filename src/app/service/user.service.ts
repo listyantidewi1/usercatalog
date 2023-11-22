@@ -13,37 +13,13 @@ export class UserService {
 
   constructor(private http: HttpClient) {}
 
-  //fetch all users
+  //fetch users within certain limit
   getUsers(page: number, limit: number): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}?_page=${page}&_limit=${limit}`);
-    // .pipe(map((response) => this.processResponse(response)));
   }
-  // getUsers(size: number = 10): Observable<any> {
-  //   return this.http.get<any>(`$(this.apiUrl)/?results=${size}`);
-  // }
 
-  //fetch one user using idCustomer
-  // getUser(idCustomer: number): Observable<any> {
-  //   return this.http.get<any>(`${this.apiUrl}?id=${idCustomer}`);
-  //   // .pipe(map((response) => this.processResponse(response)));
-  // }
-  // getUser(uuid: number = 1): Observable<any> {
-  //   return this.http.get<any>(`$(this.apiUrl)/?uuid=${uuid}`);
-  // }
-
-  // private processResponse(response: Response): Response {
-  //   return {
-  //     // results: response.results.map(
-  //     //   (user: any) =>
-  //     //     <User>{
-  //     //       id: user.id,
-  //     //       customer_name: user.customer_name,
-  //     //       address: user.address,
-  //     //       email: user.email,
-  //     //       phone_number: user.phone_number,
-  //     //     }
-  //     // ),
-  //
-  //   };
-  // }
+  //fetch users within certain limit
+  getAllUsers(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}`);
+  }
 }

@@ -7,11 +7,12 @@ const routes: Routes = [
   // { path: 'users', component: UsersComponent },
   { path: 'users/:page/:limit', component: UsersComponent },
   { path: 'user/:id', component: UserdetailComponent },
+  { path: 'users', component: UsersComponent },
   { path: '**', redirectTo: 'users/:page/:limit' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

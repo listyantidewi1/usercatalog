@@ -13,7 +13,8 @@ export class UsersComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router
   ) {}
-  response: Array<any>; //untuk menampung semua data
+  response: Array<any>; //untuk menampung sebagian data
+  responseAll: Array<any>; //untuk menampung semua data
   searchResponse: Array<any>; //untuk menampung data hasil pencarian
   page: number;
   limit: number;
@@ -60,13 +61,18 @@ export class UsersComponent implements OnInit {
   //fungsi untuk pencarian
   searchByName() {
     this.loading = true; //loading
+    this.userService.getAllUsers().subscribe((results: any) => {
+      console.log(results);
+      this.responseAll = results;
+      this.loading = false;
+    });
     if (this.searchTerm.trim() !== '') {
       //hilangkan spasi di awal dan di akhir kata kunci pencarian
       console.log(this.searchTerm); //log kata kunci pencarian ke console
       this.loading = false; //matikan loading
 
       //filter hasil pencarian dari response sesuai kata kunci yang sudah dirubah ke huruf kecil
-      this.searchResponse = this.response.filter((item) =>
+      this.searchResponse = this.responseAll.filter((item) =>
         item.customer_name.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
